@@ -359,11 +359,11 @@ public class ExamplesTable {
     }
 
     public <T> List<T> getRowsAs(Class<T> type) {
-        return getRowsAs(type, Collections.emptyMap(), false);
+        return getRowsAs(type, Collections.<String, String>emptyMap(), false);
     }
 
     public <T> List<T> getRowsAs(Class<T> type, boolean replaceNamedParameters) {
-        return getRowsAs(type, Collections.emptyMap(), replaceNamedParameters);
+        return getRowsAs(type, Collections.<String, String>emptyMap(), replaceNamedParameters);
     }
 
     public <T> List<T> getRowsAs(Class<T> type, Map<String, String> fieldNameMapping) {
