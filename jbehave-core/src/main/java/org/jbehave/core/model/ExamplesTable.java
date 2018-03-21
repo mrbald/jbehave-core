@@ -359,13 +359,21 @@ public class ExamplesTable {
     }
 
     public <T> List<T> getRowsAs(Class<T> type) {
-        return getRowsAs(type, new HashMap<String, String>());
+        return getRowsAs(type, Collections.emptyMap(), false);
+    }
+
+    public <T> List<T> getRowsAs(Class<T> type, boolean replaceNamedParameters) {
+        return getRowsAs(type, Collections.emptyMap(), replaceNamedParameters);
     }
 
     public <T> List<T> getRowsAs(Class<T> type, Map<String, String> fieldNameMapping) {
+        return getRowsAs(type, fieldNameMapping, false);
+    }
+
+    public <T> List<T> getRowsAs(Class<T> type, Map<String, String> fieldNameMapping, boolean replaceNamedParameters) {
         List<T> rows = new ArrayList<>();
 
-        for (Parameters parameters : getRowsAsParameters()) {
+        for (Parameters parameters : getRowsAsParameters(replaceNamedParameters)) {
             rows.add(mapToType(parameters, type, fieldNameMapping));
         }
 
